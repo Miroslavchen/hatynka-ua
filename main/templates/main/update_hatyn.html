@@ -1,0 +1,54 @@
+{% extends 'main/top_table.html' %}
+
+{% load static %}
+
+{% block style %}{% static 'main/css/hatynk.css' %}{% endblock %}
+
+{% block title %}{{ title }} {{ post.Name }}{% endblock %}
+
+{% block content %}
+    <div class="blank">
+        <p class="title">Змінити товар</p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for f in form %}
+                {% if f.name == 'Name'%}
+                    <input type="text" name="Name" class="form-control buff" id="id_Name" value="{{ post.Name }}">
+                {% elif f.name == 'X'%}
+                    <input type="text" name="X" class="form-control buff" id="id_X" value="{{ post.X }}">
+                {% elif f.name == 'Y'%}
+                    <input type="text" name="Y" class="form-control buff" id="id_Y" value="{{ post.Y }}">
+                {% elif f.name == 'Z'%}
+                    <input type="text" name="Z" class="form-control buff" id="id_Z" value="{{ post.Z }}">
+                {% elif f.name == 'Time'%}
+                    <input type="time" name="Time" class="form-control buff" id="id_Time" value="{% if post.Time.day < 10 and post.Time.day != 0 %}0{{ post.Time.day }}{% else %}{{ post.Time.day }}{% endif %}.{% if post.Time.month < 10 and post.Time.month != 0 %}0{{ post.Time.month }}{% else %}{{ post.Time.month }}{% endif %}.{{ post.Time.year }}">
+                {% elif f.name == 'Cost'%}
+                    <input type="text" name="Cost" class="form-control buff" id="id_Cost" value="{{ post.Cost }}">
+                {% elif f.name == 'Img1'%}
+                    <input type="file" name="Img1" accept=".png .jpg" class="form-control buff" id="id_Img1" value="{{ post.Img1.url }}">
+                {% elif f.name == 'Img2'%}
+                    {% if post.Img2 %}
+                    <input type="file" name="Img2" accept=".png .jpg" class="form-control buff" id="id_Img2" value="{{ post.Img2.url }}">
+                    {% endif %}
+                {% elif f.name == 'Img3'%}
+                    {% if post.Img3 %}
+                    <input type="file" name="Img3" accept=".png .jpg" class="form-control buff" id="id_Img3" value="{{ post.Img3.url }}">
+                    {% endif %}
+                {% elif f.name == 'Img4'%}
+                    {% if post.Img4 %}
+                    <input type="file" name="Img4" accept=".png .jpg" class="form-control buff" id="id_Img4" value="{{ post.Img4.url }}">
+                    {% endif %}
+                {% else %}
+                    {{ f }}
+                {% endif %}
+
+            {% endfor %}
+            {% if error %}
+                Введіть всі данні правильно
+            {% endif %}
+            <button type="submit" class="btn btn-outline-success succ"><b>Змінити</b></button>
+        </form>
+    </div>
+
+
+{% endblock %}

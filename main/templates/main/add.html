@@ -1,0 +1,25 @@
+{% extends 'main/top_table.html' %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    {% if user %}
+        <div class="blank user-select-none">
+            <p class="title user-select-none">Додати товар</p>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for f in form %}
+                    {{ f }}
+                {% endfor %}
+                {{ error }}
+                <button type="submit" class="btn btn-outline-success succ user-select-none"><b>Підтвердити</b></button>
+            </form>
+        </div>
+    {% else %}
+        <div class="plank">
+            <p class="title user-select-none">В користувача {{ username }} немає прав для додавання товару!</p>
+        </div>
+    {% endif %}
+{% endblock %}

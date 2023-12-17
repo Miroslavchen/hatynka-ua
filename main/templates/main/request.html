@@ -1,0 +1,11 @@
+{% extends 'main/top_table.html' %}
+
+{% load static %}
+
+{% block style %}{% static 'main/css/hatynk.css' %}{% endblock %}
+
+{% block title %}request{% endblock %}
+
+{% block content %}
+<p>{{ request }}</p>
+{% endblock %}

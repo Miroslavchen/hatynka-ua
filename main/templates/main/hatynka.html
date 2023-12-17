@@ -1,0 +1,54 @@
+{% extends 'main/top_table.html' %}
+
+{% load static %}
+
+{% block title %}{{ post.Name }}{% endblock %}
+
+{% block content %}
+    <div class="slider user-select-none">
+        <div class="slides user-select-none">
+            <input type="radio" name="r" id="r1" checked>
+            <input type="radio" name="r" id="r2">
+            <input type="radio" name="r" id="r3">
+            <input type="radio" name="r" id="r4">
+
+            <div class="slide s1"><img src="{% if post.Img1 %}{{ post.Img1.url }}{% endif %}"></div>
+            <div class="slide"><img src="{% if post.Img2 %}{{ post.Img2.url }}{% endif %}"></div>
+            <div class="slide"><img src="{% if post.Img3 %}{{ post.Img3.url }}{% endif %}"></div>
+            <div class="slide"><img src="{% if post.Img4 %}{{ post.Img4.url }}{% endif %}"></div>
+        </div>
+
+        <div class="navigation user-select-none">
+            {% if not post.Img2 %}
+
+            {% elif post.Img2 and post.Img3 and post.Img4 %}
+                <label for="r1" class="bar"></label>
+                <label for="r2" class="bar"></label>
+                <label for="r3" class="bar"></label>
+                <label for="r4" class="bar"></label>
+            {% elif post.Img2 and post.Img3 %}
+                <label for="r1" class="bar"></label>
+                <label for="r2" class="bar"></label>
+                <label for="r3" class="bar"></label>
+            {% elif post.Img2 %}
+                <label for="r1" class="bar"></label>
+                <label for="r2" class="bar"></label>
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="cont" style="left: 34%; top: -10px; font-size: 150%;">
+        <p class="val user-select-none">Характеристики: </p>
+        <p class="har user-select-none">Довжина: {{ post.X }}</p>
+        <p class="har user-select-none">Ширина: {{ post.Y }}</p>
+        <p class="har user-select-none">Висота: {{ post.Z }}</p>
+        <p class="har user-select-none">Термін служби: До {% if post.Time.day < 10 and post.Time.day != 0 %}0{{ post.Time.day }}{% else %}{{ post.Time.day }}{% endif %}.{% if post.Time.month < 10 and post.Time.month != 0 %}0{{ post.Time.month }}{% else %}{{ post.Time.month }}{% endif %}.{{ post.Time.year }}</p>
+        <p class="har user-select-none">Українська ручна робота :)</p>
+        <p class="har user-select-none">Коштує: {{ post.Cost }}</p>
+    </div>
+
+    <a href="{{ post.url }}/buy"><button class="btn btn-success user-select-none" style="border-radius: 70%; width: 9%; height: 9%; position: absolute; right: 28%; top: 39%; ">Замовити</button></a>
+    {% if user %}<a href="{{ post.url }}/update"><p class="update user-select-none"><b>Змінити</b></p></a>{% endif %}
+    {% if user %}<a href="{{ post.url }}/delete"><p class="delete user-select-none"><b>Видалити</b></p></a>{% endif %}
+
+{% endblock %}

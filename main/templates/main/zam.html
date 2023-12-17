@@ -1,0 +1,36 @@
+{% extends 'main/top_table.html' %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <ul class="products" style="position: relative;top: 1px;padding-right: 345px;">
+        {% for p in zams %}
+            <a href="{{ p.url|slice:": -4" }}">
+                <li class="contanier" style="margin-top: 7px;" onmouseover="moveTarget('zam{{ p.idi }}')" onmouseout="resetTarget('zam{{ p.idi }}')">
+                    <div class="content">
+                        <p class="product user-select-none" style="border-top: solid 2.3px #222920; border-radius: 4px">
+                            {{ p.Name }} | {{ p.Phone }} | <br>{{ p.Email }}
+                        </p>
+                    </div>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="idi" value="{{ p.idi }}">
+                        <button class="btn btn-outline-success user-select-none" id="zam{{ p.idi }}" style="position: relative; left: 104%; bottom: 65px; transition: transform 0.5s ease"><i class="fa-solid fa-trash f"></i></button>
+                    </form>
+                </li>
+            </a>
+
+        {% endfor %}
+    </ul>
+{#        <script>#}
+{#            function moveTarget(idi) {#}
+{#                document.querySelector('#' + idi).style.transform = 'translateX(65px)';#}
+{#            }#}
+{##}
+{#            function resetTarget(idi) {#}
+{#                document.querySelector('#' + idi).style.transform = 'translateX(0)';#}
+{#            }#}
+{#        </script>#}
+{% endblock %}

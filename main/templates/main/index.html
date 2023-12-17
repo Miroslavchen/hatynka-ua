@@ -1,0 +1,30 @@
+{% extends 'main/top_table.html' %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <ul class="products user-select-none w-50 mx-auto" id="ul" style="position: relative;top: 1px;">
+        {% for p in posts %}
+            {% if p.url and p.Img1 %}
+                <a href="hatyn/{{ p.url }}">
+                    <li class="contanier h-100" style="margin-top: 7px;">
+                        <div class="img">
+                            {% if p.Img1 %}
+                                <img src="media/{{ p.Img1 }}">
+                            {% endif %}
+                        </div>
+
+                        <div class="content">
+                            <p class="product">{{ p.Name }}</p>
+                        </div>
+
+                    </li>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

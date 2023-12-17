@@ -1,0 +1,25 @@
+.home {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    background-color: #eeff48;
+    border: solid 4px #2c2f0d;
+    border-radius: 15%;
+}
+
+a {
+    text-decoration: none;
+    color: #01002b;
+}
+
+.home:hover {
+    transform: scale(1.15);
+    transform: rotateZ(-15deg);
+    transition: all 1.2s ease;
+    color: #0d1f2b;
+}
+
+h3 {
+    margin-top: 5%;
+    margin-left: 30%;
+}

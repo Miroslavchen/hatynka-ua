@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.slider {
+    width: 346px;
+    height: 346px;
+    overflow: hidden;
+    border: solid 6px rgba(3, 13, 69, .6);
+    border-radius: 13%;
+    position: absolute;
+    top: 42%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+}
+
+.navigation {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.bar {
+    height: 8px;
+    width: 30px;
+    margin: 6px;
+    cursor: pointer;
+    background-color: #5f6b6e;
+    opacity: .7;
+    border-radius: 10px;
+    transition: all .4s ease;
+}
+
+.bar:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+input[name="r"] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.slides {
+    width: 400%;
+    height: 100%;
+    display: flex;
+}
+
+.slide {
+    width: 25%;
+    transition: all 1.6s ease;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+#r1:checked ~ .s1 {
+    margin-left: 0;
+}
+
+#r2:checked ~ .s1 {
+    margin-left: -25%;
+}
+
+#r3:checked ~ .s1 {
+    margin-left: -50%;
+}
+
+#r4:checked ~ .s1 {
+    margin-left: -75%;
+}
+
+a {
+    text-decoration: none;
+    color: #01002b;
+}
+
+.contact {
+    position: absolute;
+    right: 28%;
+    top: 39%;
+    padding: .4%;
+    width: 9%;
+    font-size: 140%;
+    font-weight: 670;
+    text-decoration: none;
+    color: #e2db24;
+    margin: 0px;
+    border: solid 3px rgba(3, 13, 69, .6);
+    border-radius: 44%;
+    background-color: #276e04;
+}
+
+.contact:hover{
+    transition: all 1.2s ease;
+    transform: scale(1.15);
+}
+
+#cont {
+    position: relative;
+    left: 32%;
+    top: 32px;
+    width: 20%;
+}
+
+.har {
+    position: relative;
+    left: 18%;
+}
+
+.update {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    background-color: #35599b;
+    border: solid 4px #2c2f0d;
+    border-radius: 15%;
+}
+
+.update:hover {
+    transform: scale(1.05);
+    transform: rotateZ(-15deg);
+    transition: all 1.2s ease;
+    color: #0d1f2b;
+}
+
+.delete {
+    position: absolute;
+    left: 102px;
+    bottom: 12px;
+    background-color: #c1160f;
+    border: solid 4px #2c2f0d;
+    border-radius: 15%;
+}
+
+.delete:hover {
+    transform: scale(1.05);
+    transform: rotateZ(15deg);
+    transition: all 1.2s ease;
+    color: #0d1f2b;
+}
+
+.add {
+    position: absolute;
+    top: 11%;
+    right: 3%;
+    width: 130px;
+    text-decoration: none;
+    color: #5f715c;
+    margin: 0px;
+    padding: 7px;
+    border: solid 2px #1c3a24;
+    border-radius: 25px;
+    background-color: #369b00;
+}

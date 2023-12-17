@@ -1,0 +1,39 @@
+{% extends 'main/top_table.html' %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="plank user-select-none">
+        <p class="title user-select-none">Замовлення {{ Name }}</p>
+        <form method="post">
+            {% csrf_token %}
+            {% for f in form %}
+                {% if auth %}
+                    {% if f.name == "url" %}
+                        <input type="hidden" name="url" id="id_url" value="{{ url }}">
+                    {% elif f.name == "Name" %}
+                        <input type="hidden" name="Name" id="id_Name" value="{{ username }}">
+                    {% elif f.name == "Email" %}
+                        {% if email != '' %}
+                            <input type="hidden" name="Email" id="id_Email" value="{{ email }}">
+                        {% else %}
+                            {{ f }}
+                        {% endif %}
+                    {% else %}
+                        {{ f }}
+                    {% endif %}
+                {% else %}
+                    {% if f.name == "url" %}
+                        <input type="hidden" name="url" id="id_url" value="{{ url }}">
+                    {% else %}
+                        {{ f }}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {{ errors }}
+            <button type="submit" class="btn btn-outline-info succ"><b>Купити</b></button>
+        </form>
+    </div>
+{% endblock %}
